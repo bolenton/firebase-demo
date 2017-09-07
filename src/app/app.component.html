@@ -1,4 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <ul>
-  <li *ngFor="let course of courses" > {{ course.$value }}</li>
+  <li *ngFor="let course of courses" > {{ course.Instructor }}</li>
 </ul>
+
+<p>{{ courses | json }}</p>

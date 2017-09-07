@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from "angularfire2/database";
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,13 @@ import { AngularFireDatabase } from "angularfire2/database";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  courses: any;
+  courses;
 
   constructor(db: AngularFireDatabase) {
     db.list('/courses') 
-      .subscribe(courses => {
-        this.courses = courses;
-        console.log(courses)
+      .subscribe(response =>  {
+        this.courses = response;
+        console.log(response)
       })
     
   }
