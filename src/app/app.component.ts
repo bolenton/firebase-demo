@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { AngularFireDatabase } from "angularfire2/database";
 import { Observable } from "rxjs/Observable";
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,9 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  courses;
+  courses$;
 
   constructor(db: AngularFireDatabase) {
-    db.list('/courses') 
-      .subscribe(response =>  {
-        this.courses = response;
-        console.log(response)
-      })
-    
+    this.courses$ = db.list('/courses');
   }
 }

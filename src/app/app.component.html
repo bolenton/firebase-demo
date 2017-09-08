@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-  <div *ngFor="let course of courses" >
+  <div *ngFor="let course of courses$ | async" >
      <p>Id: {{ course.ID }}</p>
      <p>Instructor: {{ course.Instructor }}</p>
      <p>Subject: {{ course.Subject }}</p>
@@ -8,5 +8,5 @@
      <hr>
   </div>
 
-
+<button (click)="ngOnDestroy()" >Go Offline</button>
 <p> {{ courses | json }}</p>
