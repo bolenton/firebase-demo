@@ -1,6 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<ul>
-  <li *ngFor="let course of courses" > {{ course.Instructor }}</li>
-</ul>
 
-<p>{{ courses | json }}</p>
+  <div *ngFor="let course of courses" >
+     <p>Id: {{ course.ID }}</p>
+     <p>Instructor: {{ course.Instructor }}</p>
+     <p>Subject: {{ course.Subject }}</p>
+     <p>Capacity: {{ course.Capacity }}</p>
+     <hr>
+  </div>
+
+
+<p> {{ courses | json }}</p>
