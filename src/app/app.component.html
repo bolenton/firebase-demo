@@ -1,12 +1,34 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<input type="text" (keyup.enter)="add(course)" #course>
 
-  <div *ngFor="let course of courses$ | async" >
-     <p>Id: {{ course.ID }}</p>
-     <p>Instructor: {{ course.Instructor }}</p>
-     <p>Subject: {{ course.Subject }}</p>
-     <p>Capacity: {{ course.Capacity }}</p>
-     <hr>
-  </div>
+<!-- Display a course json object from  firebase Real time-->
+<p>{{ course$ | async | json}}</p>
 
-<button (click)="ngOnDestroy()" >Go Offline</button>
-<p> {{ courses | json }}</p>
+<!-- Display an author values from firebase Real time-->
+<div *ngIf="author$ | async as author">
+    <p>Name: {{ (author$ | async).Name }}</p>
+    <p>Age: {{ (author$ | async).Age }}</p>
+    <p>Books: {{ (author$ | async).Books }}</p>
+</div>
+
+<br>
+
+<!-- We can simpliy the above code like this. -->
+<div *ngIf="author$ | async as author">
+    <p>Name: {{ author.Name }}</p>
+    <p>Age: {{ author.Age }}</p>
+    <p>Books: {{ author.Books }}</p>
+</div>
+
+
+<br><br>
+
+<!-- Display all courses firebase Real time-->
+<div *ngFor="let course of courses$ | async" >
+    <p>Id: {{ course.ID }}</p>
+    <p>Instructor: {{ course.Instructor }}</p>
+    <p>Subject: {{ course.Subject }}</p>
+    <p>Capacity: {{ course.Capacity }}</p>
+    <button (click)="update()">Uodate</button>
+    <button (click)="delete()">Delete</button>
+    <hr>
+</div>
